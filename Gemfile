@@ -9,6 +9,7 @@ gem 'sqlite3'
 
 group 'development' do 
   gem 'rspec-rails', '2.0.1'
+  gem 'irbtools', :require => 'irbtools/configure'
 end
 
 group 'test' do 
