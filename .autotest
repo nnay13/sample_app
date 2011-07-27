@@ -1,10 +1,15 @@
-class Autotest
-
-  def get_to_green
-    begin
-      rerun_all_tests
-      wait_for_changes unless all_good
-    end until all_good
+Autotest.add_hook :initialize do |autotest|
+  autotest.add_mapping(%r%^spec/(requests)/.*rb$%) do|filename, _|
+    filename
   end
+end 
+#class Autotest
 
-end
+ # def get_to_green
+  #  begin
+   #   rerun_all_tests
+    #  wait_for_changes unless all_good
+    #end until all_good
+#  end
+
+#end

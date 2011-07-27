@@ -1,4 +1,5 @@
 # == Schema Information
+# Schema version: 20110720092245
 #
 # Table name: users
 #
@@ -9,6 +10,10 @@
 #  updated_at         :datetime
 #  encrypted_password :string(255)
 #  salt               :string(255)
+#
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
 #
 
 class User < ActiveRecord::Base
@@ -32,7 +37,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
 
   def has_password?(submitted_password)
-    encrypt(submitted_password) == self.encrypted_password
+    encrypt(submitted_password) == encrypted_password
   end
 
   def self.authenticate (submitted_email, submitted_password)
